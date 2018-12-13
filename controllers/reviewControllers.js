@@ -9,7 +9,6 @@ const getReviews = (req, res, next) => {
 
 const postReview = (req, res, next) => {
     const body = req.body
-    console.log(body)
     if(!body.name || !body.description || !body.subject || !body.rating){
         res.json({error: 'Please make sure all fields are filled out.'})
     } else {

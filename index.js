@@ -33,6 +33,7 @@ app.post('/send', (req, res, next) => {
     const message = body.message
     const subject = body.subject
     const asap = body.asap
+    const whenToContact = body.whenToContact
 
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
@@ -51,15 +52,16 @@ app.post('/send', (req, res, next) => {
             from: '"Floerke Media" <Floerke.Media@gmail.com>', // sender address
             to: 'skiroyjenkins@gmail.com', // list of receivers
             subject: 'New Student Request', // Subject line
-            text: 'Hello world? sjdlfkjaslkdjflksjdlfk', // plain text body
+            text: 'Hello world?', // plain text body
             html: `<h2>New Student Contact</h2>
-            ${asap ? `<h4>Contact ASAP</h4>` : ''}
-            <h4>${parentFname} ${parentLname} has requested ${subject} for their student ${studentFname} ${studentLname}.</h4>
+            ${asap ? `<h4>Requested Contact ASAP</h4>` : ''}
+            <h4>${parentFname} ${parentLname} has requested ${subject} help for their student ${studentFname} ${studentLname}.</h4>
             <h3>Parent Message:</h3>
             <p>${message}</p>
             <br/><h3>Contact Info:</h3>
             <h4>Email: ${email}</h4>
-            <h4>Phone: ${phone}</h4>` // html body
+            <h4>Phone: ${phone}</h4>
+            <h4>A good time to contact ${parentFname} is: ${whenToContact}</h4>` // html body
         };
 
         // send mail with defined transport object
