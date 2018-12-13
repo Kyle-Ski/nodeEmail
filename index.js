@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const nodemailer = require('nodemailer');
 const port = process.env.PORT || 3222
+const reviews = require('./routes/reviewRoutes')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -17,6 +18,8 @@ app.get('/', (req, res, next) => {
         message: 'running'
     })
 })
+
+app.use('/reviews', reviews)
 
 
 app.post('/send', (req, res, next) => {
