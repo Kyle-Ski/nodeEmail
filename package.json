@@ -20,5 +20,8 @@
     "nodemailer": "^4.7.0",
     "nodemon": "^1.18.8",
     "pg": "^7.7.1"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2"
   }
 }
